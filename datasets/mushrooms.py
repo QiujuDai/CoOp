@@ -23,8 +23,8 @@ class Mushrooms(DatasetBase):
         if os.path.exists(self.split_path):
             train, val, test = self.read_split(self.split_path, self.img_dir)
         else:
-            trainval = self.read_data(split_file="trainval.txt", self.img_dir)
-            test = self.read_data(split_file="test.txt", self.img_dir)
+            trainval = self.read_data(split_file="trainval.txt", img_dir=self.img_dir)
+            test = self.read_data(split_file="test.txt", img_dir=self.img_dir)
             train, val = self.split_trainval(trainval)
             self.save_split(train, val, test, self.split_path)
 
