@@ -23,8 +23,8 @@ class Mushrooms(DatasetBase):
         if os.path.exists(self.split_path):
             train, val, test = self.read_split(self.split_path, self.img_dir)
         else:
-            trainval = self.read_data(split_file="trainval.txt")
-            test = self.read_data(split_file="test.txt")
+            trainval = self.read_data(split_file="trainval.txt", self.img_dir)
+            test = self.read_data(split_file="test.txt", self.img_dir)
             train, val = self.split_trainval(trainval)
             self.save_split(train, val, test, self.split_path)
 
@@ -97,7 +97,7 @@ class Mushrooms(DatasetBase):
             for item in items:
                 impath = item.impath
                 impath = impath.split("mushrooms_dataset")[-1]
-                # print(impath)
+                print(impath)
                 label = item.label
                 classname = item.classname
                 out.append((impath, label, classname))
@@ -113,11 +113,11 @@ class Mushrooms(DatasetBase):
         print(f"Saved split to {filepath}")
 
     @staticmethod
-    def read_split(filepath):
+    def read_split(filepath, img_dir):
         def _convert(items):
             out = []
             for impath, label, classname in items:
-                impath = os.path.join(self.img_dir, impath)
+                impath = os.path.join(img_dir, impath)
                 # print(impath)
                 item = Datum(impath=impath, label=int(label), classname=classname)
                 out.append(item)
