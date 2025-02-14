@@ -118,7 +118,7 @@ class Mushrooms(DatasetBase):
             out = []
             for impath, label, classname in items:
                 impath = os.path.join(img_dir, impath)
-                # print(impath)
+                print(impath)
                 item = Datum(impath=impath, label=int(label), classname=classname)
                 out.append(item)
             return out
