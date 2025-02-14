@@ -21,7 +21,8 @@ import datasets.imagenet
 import datasets.imagenet_sketch
 import datasets.imagenetv2
 import datasets.imagenet_a
-import datasets.imagenet_r
+
+import datasets.mushrooms
 
 import trainers.coop
 import trainers.cocoop
