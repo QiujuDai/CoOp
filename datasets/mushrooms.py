@@ -96,7 +96,7 @@ class Mushrooms(DatasetBase):
             out = []
             for item in items:
                 impath = item.impath
-                impath = impath.split("mushrooms_dataset")[-1]
+                impath = impath.split("data")[-1].split("/")[-1]
                 print(impath)
                 label = item.label
                 classname = item.classname
@@ -118,10 +118,10 @@ class Mushrooms(DatasetBase):
             out = []
             for impath, label, classname in items:
                 print(f"111 impath:{impath}, img_dir:{img_dir}")
-                impath = os.path.join(img_dir, impath)
-                print(f"222 impath:{impath}, img_dir:{img_dir}")
+                impath2 = os.path.join(img_dir, impath)
+                print(f"222 impath:{impath2}, img_dir:{img_dir}")
                 
-                item = Datum(impath=impath, label=int(label), classname=classname)
+                item = Datum(impath=impath2, label=int(label), classname=classname)
                 out.append(item)
             return out
 
