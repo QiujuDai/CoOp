@@ -47,7 +47,7 @@ class Mushrooms(DatasetBase):
                     pickle.dump(data, file, protocol=pickle.HIGHEST_PROTOCOL)
 
         subsample = cfg.DATASET.SUBSAMPLE_CLASSES
-        print(f"subsample:{subsample}")
+        # print(f"subsample:{subsample}")
         train, val, test = self.subsample_classes(train, val, test, subsample=subsample)
 
         super().__init__(train_x=train, val=val, test=test)
@@ -98,7 +98,7 @@ class Mushrooms(DatasetBase):
             for item in items:
                 impath = item.impath
                 impath = impath.split("data/")[-1]
-                print(impath)
+                # print(impath)
                 label = item.label
                 classname = item.classname
                 out.append((impath, label, classname))
@@ -118,9 +118,9 @@ class Mushrooms(DatasetBase):
         def _convert(items):
             out = []
             for impath, label, classname in items:
-                print(f"111 impath:{impath}, img_dir:{img_dir}")
+                # print(f"111 impath:{impath}, img_dir:{img_dir}")
                 impath2 = os.path.join(img_dir, impath)
-                print(f"222 impath:{impath2}, img_dir:{img_dir}")
+                # print(f"222 impath:{impath2}, img_dir:{img_dir}")
                 
                 item = Datum(impath=impath2, label=int(label), classname=classname)
                 out.append(item)
