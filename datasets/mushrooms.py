@@ -59,7 +59,7 @@ class Mushrooms(DatasetBase):
                 line = line.strip()
                 impath, label, classname = line.split(" ")
                 label = int(label)  # convert to 0-based index
-                item = Datum(impath=impath, label=label, classname=breed)
+                item = Datum(impath=impath, label=label, classname=classname)
                 items.append(item)
 
         return items
