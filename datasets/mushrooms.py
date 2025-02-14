@@ -47,7 +47,7 @@ class Mushrooms(DatasetBase):
                     pickle.dump(data, file, protocol=pickle.HIGHEST_PROTOCOL)
 
         subsample = cfg.DATASET.SUBSAMPLE_CLASSES
-        print(f"subsample:{}subsample")
+        print(f"subsample:{subsample}")
         train, val, test = self.subsample_classes(train, val, test, subsample=subsample)
 
         super().__init__(train_x=train, val=val, test=test)
