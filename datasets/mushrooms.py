@@ -21,7 +21,7 @@ class Mushrooms(DatasetBase):
         self.img_dir = os.path.join(self.dataset_dir, "data")
 
         if os.path.exists(self.split_path):
-            train, val, test = self.read_split(self.split_path)
+            train, val, test = self.read_split(self.split_path, self.img_dir)
         else:
             trainval = self.read_data(split_file="trainval.txt")
             test = self.read_data(split_file="test.txt")
@@ -51,7 +51,7 @@ class Mushrooms(DatasetBase):
 
         super().__init__(train_x=train, val=val, test=test)
 
-    def read_data(self, split_file):
+    def read_data(self, split_file, img_dir):
         filepath = os.path.join(self.dataset_dir, split_file)
         items = []
 
@@ -60,7 +60,7 @@ class Mushrooms(DatasetBase):
             for line in lines:
                 line = line.strip()
                 impath, label, classname = line.split(" ")
-                impath = os.path.join(self.img_dir, impath)
+                impath = os.path.join(img_dir, impath)
                 label = int(label)  # convert to 0-based index
                 item = Datum(impath=impath, label=label, classname=classname)
                 items.append(item)
@@ -97,7 +97,7 @@ class Mushrooms(DatasetBase):
             for item in items:
                 impath = item.impath
                 impath = impath.split("mushrooms_dataset")[-1]
-                print(impath)
+                # print(impath)
                 label = item.label
                 classname = item.classname
                 out.append((impath, label, classname))
@@ -118,7 +118,7 @@ class Mushrooms(DatasetBase):
             out = []
             for impath, label, classname in items:
                 impath = os.path.join(self.img_dir, impath)
-                print(impath)
+                # print(impath)
                 item = Datum(impath=impath, label=int(label), classname=classname)
                 out.append(item)
             return out
