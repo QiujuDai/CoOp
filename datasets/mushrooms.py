@@ -117,8 +117,10 @@ class Mushrooms(DatasetBase):
         def _convert(items):
             out = []
             for impath, label, classname in items:
+                print(f"111 impath:{impath}, img_dir:{img_dir}")
                 impath = os.path.join(img_dir, impath)
-                print(f"impath:{impath}, img_dir:{img_dir}")
+                print(f"222 impath:{impath}, img_dir:{img_dir}")
+                
                 item = Datum(impath=impath, label=int(label), classname=classname)
                 out.append(item)
             return out
