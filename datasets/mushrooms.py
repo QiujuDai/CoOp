@@ -96,7 +96,7 @@ class Mushrooms(DatasetBase):
             out = []
             for item in items:
                 impath = item.impath
-                impath = impath.split("data")[-1].split("/")[-1]
+                impath = impath.split("data")[-1]
                 print(impath)
                 label = item.label
                 classname = item.classname
