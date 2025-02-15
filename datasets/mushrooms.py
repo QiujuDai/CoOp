@@ -39,16 +39,15 @@ class Mushrooms(DatasetBase):
                     data = pickle.load(file)
                     train, val = data["train"], data["val"]
             else:
-
-                for item in val:
-                    print(f"444 impath:{item.impath}")
+                # for item in val:
+                #     print(f"444 impath:{item.impath}")
 
                 train = self.generate_fewshot_dataset(train, num_shots=num_shots)
                 val = self.generate_fewshot_dataset(val, num_shots=min(num_shots, 4))
 
-                for item in val:
-                    print(f"555 impath:{item.impath}")
-                    
+                # for item in val:
+                #     print(f"555 impath:{item.impath}")
+
                 data = {"train": train, "val": val}
                 print(f"Saving preprocessed few-shot data to {preprocessed}")
                 with open(preprocessed, "wb") as file:
@@ -56,6 +55,13 @@ class Mushrooms(DatasetBase):
 
         subsample = cfg.DATASET.SUBSAMPLE_CLASSES
         # print(f"subsample:{subsample}")
+
+        for item in train:
+            print(f"666 impath:{item.impath}")
+        for item in val:
+            print(f"777 impath:{item.impath}")
+        for item in test:
+            print(f"888 impath:{item.impath}")
         train, val, test = self.subsample_classes(train, val, test, subsample=subsample)
 
         super().__init__(train_x=train, val=val, test=test)
