@@ -48,6 +48,7 @@ class Mushrooms(DatasetBase):
 
                 for item in val:
                     print(f"555 impath:{item.impath}")
+                    
                 data = {"train": train, "val": val}
                 print(f"Saving preprocessed few-shot data to {preprocessed}")
                 with open(preprocessed, "wb") as file:
@@ -179,7 +180,7 @@ class Mushrooms(DatasetBase):
             for item in dataset:
                 if item.label not in selected:
                     continue
-                print(f"item impath: {item.impath}")
+                # print(f"item impath: {item.impath}")
                 item_new = Datum(
                     impath=item.impath,
                     label=relabeler[item.label],
