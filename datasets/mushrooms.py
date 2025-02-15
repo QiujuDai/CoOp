@@ -39,6 +39,16 @@ class Mushrooms(DatasetBase):
                     data = pickle.load(file)
                     train, val = data["train"], data["val"]
             else:
+
+                for item in train:
+                    print(f"333 impath:{item.impath}")
+                    # impath2 = os.path.join(img_dir, impath)
+                    # # print(f"222 impath:{impath2}, img_dir:{img_dir}")
+                    
+                    # item = Datum(impath=impath2, label=int(label), classname=classname)
+                    # out.append(item)
+                    # return out
+
                 train = self.generate_fewshot_dataset(train, num_shots=num_shots)
                 val = self.generate_fewshot_dataset(val, num_shots=min(num_shots, 4))
                 data = {"train": train, "val": val}
