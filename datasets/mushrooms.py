@@ -56,12 +56,12 @@ class Mushrooms(DatasetBase):
         subsample = cfg.DATASET.SUBSAMPLE_CLASSES
         # print(f"subsample:{subsample}")
 
-        for item in train:
-            print(f"666 impath:{item.impath}")
-        for item in val:
-            print(f"777 impath:{item.impath}")
-        for item in test:
-            print(f"888 impath:{item.impath}")
+        # for item in train:
+        #     print(f"666 impath:{item.impath}")
+        # for item in val:
+        #     print(f"777 impath:{item.impath}")
+        # for item in test:
+        #     print(f"888 impath:{item.impath}")
         train, val, test = self.subsample_classes(train, val, test, subsample=subsample)
 
         super().__init__(train_x=train, val=val, test=test)
